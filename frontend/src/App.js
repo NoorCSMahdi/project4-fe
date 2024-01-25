@@ -257,7 +257,7 @@ function App() {
       </div>
 
       {/* currentUser?.userType === "Admin" ? ( */}
-
+<main>
       <Routes>
         {currentUser ? (
           <>
@@ -398,16 +398,15 @@ function App() {
           </>
         )}
       </Routes>
+      </main>
       {/* <footer className="px-3 py-2 text-bg-dark mt-5 stickToBottom">
         <div className="container">
           <p className="mb-1 text-white">&copy; 2024 | Voiture App </p>
         </div>
       </footer> */}
-      <footer className="px-3 py-2 text-bg-dark mt-5 stickToBottom">
-        <div className="container">
-          <p className="mb-1 text-white">
-            &copy; 2024 WeBuild. All rights reserved.
-          </p>
+       <footer className="text-center py-3 bg-dark text-white">
+        <div className="footerContainer">
+          <p>&copy; 2024 WeBuild. All rights reserved.</p>
         </div>
       </footer>
     </>
