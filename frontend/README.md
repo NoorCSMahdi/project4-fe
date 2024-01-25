@@ -36,6 +36,31 @@ Concept Build is a web application designed to connect users with construction c
 
 
 
+## User Types
+
+### 1. Customer
+
+- Can explore different categories.
+- Can view general information about services.
+- Can register an account.
+- Can request consultations.
+- Can provide project details and receive quotations.
+
+
+### 2. Company Owner (Service Provider)
+
+- Can create an account for their company.
+- Can showcase company services and portfolio.
+- Can receive consultation requests from customers.
+- Can send quotations to customers based on their consultation requests.
+
+### 3. Admin
+
+- Has access to the administrative dashboard.
+- Can manage user accounts and permissions.
+- Can view and moderate consultation requests.
+- Can view and moderate quotations.
+
 
 ## User Stories
 
