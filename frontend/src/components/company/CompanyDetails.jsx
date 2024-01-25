@@ -93,14 +93,21 @@ export default function CompanyDetailPage(props) {
           </div>
         </div>
         </div>
+        
         <div className='text-center'>
-        <button className='btn btn-danger' style={{marginRight:"5px"}} onClick={()=>deleteCompany(companyId)}>Delete Company</button>
-        <Link className='btn btn-primary' to={`/company/edit/${company._id}`} >Edit</Link>
+        {props.user && (props.user.userType=="Admin") ? 
+        <>
+        <button className='btn btn-danger' style={{marginRight:"5px"}} onClick={()=>deleteCompany(companyId)}>Delete Company</button></>:""}
+        {props.user && (props.user.userType=="Admin" || props.user.userType=="CompanyOwner")?
+        <>
+        <Link className='btn btn-primary' to={`/company/edit/${company._id}`} >Edit</Link></>:""}
        
        
             
         <Link to={`/consultation/consultationCreateForm/${company._id}`} className='btn btn-dark mr-2'>Add Consultation</Link> &nbsp;&nbsp;
-        <Link to={`/consultation/consultationList/${company._id}`} className='btn btn-dark'>Consultation List</Link>
+        {props.user && (props.user.userType=="Admin" || props.user.userType=="CompanyOwner")? 
+        <>
+        <Link to={`/consultation/consultationList/${company._id}`} className='btn btn-dark'>Consultation List</Link></>:""}
         </div>
     </>
   )

@@ -165,7 +165,7 @@ const getToken = () => {
           <label>company</label>
           <input type='text' name='company' onChange={handleChange} readOnly></input> id
         </div> */}
-        <div className="mb-3 pb-1">
+        {/* <div className="mb-3 pb-1">
   <label htmlFor="consultation" id="consultation" className="form-label">Consultation: </label> 
   <select  name="consultation" className="form-select" onChange={handleConsultationChange} required>
     <option value="" disabled>
@@ -181,7 +181,7 @@ const getToken = () => {
     :
     null}
   </select>
-</div>
+</div> */}
 
             {/* <div className="mb-3 pb-1">
                 <label htmlFor="date" className="form-label">Date</label>
