@@ -1,70 +1,86 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# WeBuild
 
-## Available Scripts
+Concept Build is a web application designed to connect users with construction contractors, engineers, and interior designers. The platform allows users to easily find and browse services based on specific categories. Users can request consultations, provide project details, and receive quotations from service providers. The app streamlines the process of finding and engaging with professionals for construction and interior design projects.
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ERD (Entity Relationship Diagram)
+![Link to ERD](https://i.imgur.com/LwIRLfE.jpg)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Screenshots
+![link to Screenshots](https://i.imgur.com/oOYiR8C.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![link to Screenshots](https://i.imgur.com/MlA6ygr.png)
 
-### `npm run build`
+![link to Screenshots](https://i.imgur.com/kIeOcYG.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Wireframes
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![Link to Wireframes](https://i.imgur.com/oqXx8gZ.png) 
+![Link to Wireframes](https://i.imgur.com/WSWA0Oi.png) 
+![Link to Wireframes](https://i.imgur.com/wPNFaGz.png) 
+![Link to ERD](https://i.imgur.com/wPNFaGz.png)
+![Link to Wireframes](https://i.imgur.com/pyv8MTG.png) 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## Trello Board
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+[Link to Trello Board](https://trello.com/invite/b/odpSNtgf/ATTI1334ebf800b56206c6db11ade3a6dab75B061814/conceptbuild) 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+## User Stories
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1. As a user, I want to explore different categories to find construction and interior design services.
+2. As a user, I want to request a consultation for a specific service.
+3. As a user, I want to provide project details, including descriptions and layouts, during the consultation request.
+4. As a user, I want to receive quotations from service providers for my requested consultations.
+5. As a user, I want the ability to accept or reject quotations.
+6. As a user, I want to view detailed information about a company before requesting a consultation.
+7. As a service provider, I want to join the platform and showcase my company's services.
+8. As a service provider, I want to receive consultation requests from users.
+9. As a service provider, I want to send quotations to users based on their consultation requests.
 
-### Making a Progressive Web App
+## Tools Used
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+- Multer (for file uploads)
+- Cloudinary (cloud-based image and video management)
+- React Leaflet (React components for Leaflet maps)
+- JWT (JSON Web Tokens) for user authentication
+- Bcrypt (for password hashing)
+- Dayjs (date and time manipulation)
+- Dotenv (environment variable management)
 
-### Advanced Configuration
+### Frontend
+- React
+- Bootstrap (for styling)
+- Bootstrap Icons (icon library)
+- Axios (HTTP requests)
+- React Router (navigation)
+- React Modal (modal dialog component)
+- JWT Decode (for decoding JWT tokens on the client-side)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+## Future Features
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. Real-time notifications for users and service providers.
+2. Improved search and filtering options for services.
+3. Integration with payment gateways for transactions.
+4. User reviews and ratings for service providers.
+5. Enhanced user profiles with portfolio and project history.
+6. Mobile application for on-the-go access.
+7. Integration with third-party APIs for additional functionalities.
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
