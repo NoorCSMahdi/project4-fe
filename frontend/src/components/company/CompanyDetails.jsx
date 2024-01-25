@@ -95,8 +95,7 @@ export default function CompanyDetailPage(props) {
         </div>
         <div className='text-center'>
         <button className='btn btn-danger' style={{marginRight:"5px"}} onClick={()=>deleteCompany(companyId)}>Delete Company</button>
-
-        <button className='btn btn-primary' onClick={()=>handleEditCompany(company._id)}>Edit</button>
+        <Link className='btn btn-primary' to={`/company/edit/${company._id}`} >Edit</Link>
        
        
             
