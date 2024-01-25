@@ -59,7 +59,9 @@ const loadQuotationList = () => {
     // setQuotation(dummyData)
 const user= getUser();
 const userType= sessionStorage.getItem("userType");
-Axios.get('/quotation/get?id='+user.id+'&userType='+userType)
+Axios.get('/quotation/get?id='+user.id+'&userType='+userType,{headers:{
+    "Authorization":`Bearer ${getToken()}`
+}})
 //Axios.get('/quotation/index')
 .then((response) => {
 console.log("setQuotation",response);
@@ -72,7 +74,9 @@ console.log(error);
 //loadQuotationList();
 //create the API for creating the Quotation
 const addQuotation = (quotation) => {
-    Axios.post("/quotation/add",quotation)
+    Axios.post("/quotation/add",quotation,{headers:{
+        "Authorization":`Bearer ${getToken()}`
+    }})
     .then(res =>{
         console.log(res);
                     console.log("Quotation Added!");

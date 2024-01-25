@@ -1,7 +1,9 @@
-import React, { useState, useRef } from 'react';
+
 import Axios from 'axios';
-import Map from '../forms/Map';
+import Map from './Map';
+import React, { useState, useEffect ,useRef} from 'react';
 import { useNavigate } from 'react-router-dom'
+
 
 
 export default function EditCompanyForm(props) {
@@ -13,21 +15,11 @@ export default function EditCompanyForm(props) {
   const [imageName, setImageName] = useState(null);
   editCompany.user = sessionStorage.getItem("UserId");
   const navigate = useNavigate();
-  useEffect(()=>{
-    loadCategoriesList();
-  }, [])
+  // useEffect(()=>{
+  //   loadCategoriesList();
+  // }, [])
 
-  const loadCategoriesList = () =>{
-     Axios.get("/categories/index")
-     .then((response)=>{
-       setCategories(response.data.categories);
-     })
-     .catch((err) => {
-       console.log(err);
-     });
-       
-};
-
+  
   const successCallback = (position) => {
     console.log("coor",position.coords);
     const newLocation = {
@@ -97,7 +89,7 @@ export default function EditCompanyForm(props) {
     formData.append("working_days", editCompany.working_days);
     formData.append("_id",editCompany._id)
     // formData.append("exb",editCompany)
-    formData.append("Categories", newCompany.Categories);
+    // formData.append("Categories", newCompany.Categories);
     console.log(formData)
 
     Axios.put("/company/update",formData,{
@@ -146,15 +138,15 @@ export default function EditCompanyForm(props) {
             onChange={handleChange}
           />
         </div>
-        <div className="mb-3"> 
+        {/* <div className="mb-3"> 
          <div>
           <label>User</label>
           <input type='text' name='user' onChange={handleChange} value={newCompany.user} disabled></input>
         </div>
         </div>
-      
+       */}
          
-          <div class="mb-3">
+          {/* <div class="mb-3">
           <select type="number" class="form-control" id="floatingInput"  name="Categories" value={categories.Categories} onChange={handleChange} >
           <option value="">Select an option</option>
             {categories.map((category, index) => (
@@ -165,7 +157,7 @@ export default function EditCompanyForm(props) {
             </select>
             
           <label for="floatingInput">categories</label>
-        </div>
+        </div> */}
 
         <div className="mb-3">
       <label htmlFor="company_description" className="form-label">

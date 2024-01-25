@@ -177,7 +177,7 @@ return(
        <div className='col-md-6 '>
          <table className="table table-stripes table mt-4 table border-top">
           <thead>
-            <tr className="table-success">
+            <tr className="table-dark">
         
             <th>Index</th>
            
@@ -187,7 +187,7 @@ return(
               <th>Land Area</th>
               <th>Dimensions </th>
               
-              <th>Quotation</th>
+              <th> Add Quotation</th>
              <th>Edit</th>
              <th>Delete</th>
             </tr>   

@@ -5,34 +5,7 @@ import './HomePage.css';
 export default function HomePage() {
   return (
     <>
-      <header className="bg-dark text-white text-center py-2">
-        <div className="container">
-          <nav className="navbar navbar-expand-lg px-0">
-            <Link className="navbar-brand" to="/">
-              <h1 className="display-4 mb-0 text-white">WeBuild</h1>
-            </Link>
-            <div className="navbar-collapse justify-content-end">
-              <ul className="navbar-nav ml-auto">
-                <li className="nav-item">
-                  <Link className="nav-link text-white" to="/about">
-                    About Us
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link text-white" to="/contact">
-                    Contact
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link text-white" to="/login">
-                    Login
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </div>
-      </header>
+      
 
       <div className='mainContent'>
         <div className='imageHere'>
@@ -52,11 +25,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      <footer className="text-center py-3 bg-dark text-white">
-        <div className="footerContainer">
-          <p>&copy; 2024 WeBuild. All rights reserved.</p>
-        </div>
-      </footer>
+      
     </>
   );
 }

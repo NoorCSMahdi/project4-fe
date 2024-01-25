@@ -1,8 +1,12 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import {Link} from 'react-router-dom'
 
 
 export default function Category(props) {
+  
+  useEffect(() => {
+    console.log(props.user);
+  }, [])
   
 
 
@@ -20,8 +24,11 @@ export default function Category(props) {
           
            <div className='d-flex justify-content-between'>
            <div className="btn-group">
+            {/* {props.user? <h1>{props.user.userType}</h1>:"NO"} */}
+           {props.user && (props.user.userType=="Admin")? 
+           <>
             <button  type="button" className="btn btn-sm btn-outline-light" onClick={()=> props.editView(props._id)}>Edit</button>
-            <button  type="button" className="btn btn-sm btn-outline-light" onClick={()=> props.deleteCategory(props._id)}>Delete</button> </div> 
+            <button  type="button" className="btn btn-sm btn-outline-light" onClick={()=> props.deleteCategory(props._id)}>Delete</button></>:""}  </div>
            
          </div>
           </div>

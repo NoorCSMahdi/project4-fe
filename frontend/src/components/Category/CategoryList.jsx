@@ -8,7 +8,7 @@ import CategoryEditForm from './CategoryEditForm';
 
 
 
-export default function CategoryList() {
+export default function CategoryList(props) {
     const [categories, setCategories] = useState([]);
     const [isEdit, setIsEdit] = useState(false);
     const [currentCategory, setCurrentCategory] = useState({});
@@ -79,7 +79,7 @@ export default function CategoryList() {
                 image={category.categories_image}
                 editView={editView}
                 deleteCategory={deleteCategory}
-            
+            user = {props.user}
             />
               
            
