@@ -182,7 +182,7 @@ return (
     <h5> Quotation List</h5>
     <table className="table">
     <tbody>
-        <tr className="table-success">
+        <tr className="table-dark">
         <th>No.</th>
         <th>Consultation Id</th>
         <th>Description</th>

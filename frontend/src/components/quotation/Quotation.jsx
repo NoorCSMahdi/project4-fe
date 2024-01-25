@@ -19,8 +19,8 @@ export default function Quotation(props) {
     <td>{props.price}</td>
     <td>{props.notes}</td>
     <td>
-    <button type="button" onClick={() => props.editView(props._id)} className="btn btn-sm btn-warning"><FontAwesomeIcon icon="pencil" />Edit</button> 
-    <button type="button" onClick={() => props.deleteQuotation(props._id)} className="btn btn-sm btn-danger"><FontAwesomeIcon icon="trash"/>Delete</button>
+    <button type="button" onClick={() => props.editView(props._id)} className="btn btn-link"> <i className="bi bi-pencil-fill text-dark"></i></button> 
+    <button type="button" onClick={() => props.deleteQuotation(props._id)} className="btn btn-link"><i className="bi bi-trash-fill text-dark"></i></button>
     </td>
     </>
   )
