@@ -33,7 +33,7 @@ const [users, setUsers] = useState([])
 
 const fechingUser = () => {
   Axios.get('/user/index')
-  
+  //Axios.get(`/user/detail?id=${props.id}`)
   .then(res => {
     setUsers(res.data.users)
   })
@@ -155,15 +155,17 @@ console.log(err) })
 
   return (
    <>
+   <br/>
    <h2 className='text-center'>Create Consultation</h2>
    <form key={formKey} onSubmit={handleSubmit}>
 
    <div className='row d-flex justify-content-center align-items-center'>
           <div className='col-md-6'>
-            <label>Client</label>
+            <label className='form-label'>Client/ Company Id</label>
             <input
               type='text'
-              value={props.user_fullName}
+              value={props[0]?.user_fullName }
+              placeholder="Client/Company id disabled"
               disabled
               className='form-control'
             />
@@ -173,7 +175,7 @@ console.log(err) })
     
    <div className='row d-flex justify-content-center align-items-center'>
   <div className='col-md-6'>
-    <label>Description</label>
+    <label className='form-label'>Description</label>
     <textarea
       name='consultation_description'
       value={createConsultation.consultation_description}
@@ -187,7 +189,7 @@ console.log(err) })
 
   <div className='row d-flex justify-content-center align-items-center'>
   <div className='col-md-6'>
-  <label>Layout</label>
+  <label className='form-label'>Layout</label>
   <input type='file'   id="Consultation_image" name='Consultation_image' value={createConsultation.Consultation_image} onChange={handleImage} accept="image/png, image/jpeg, image/gif ,application/pdf" className='form-control'>
   </input>
   </div>
@@ -224,8 +226,8 @@ console.log(err) })
 
   <div className='row d-flex justify-content-center align-items-center'>
   <div className='col-md-6'>
-  <label>Land Area</label>
-  <input type='text' name='consultation_land_area' value={createConsultation.consultation_land_area} onChange={handleChange} className='form-control'></input>
+  <label className='form-label'>Land Area (m2)</label>
+  <input type='number' name='consultation_land_area' value={createConsultation.consultation_land_area} onChange={handleChange} className='form-control'></input>
   </div>
   </div>
 
@@ -235,10 +237,10 @@ console.log(err) })
 
   <div className="row d-flex justify-content-center align-items-center">
   <div className="col-md-6">
-    <label>Land Dimensions</label>
+    <label className='form-label'>Land Dimensions</label>
     <div className="d-flex">
       <input
-        type="text"
+        type="number"
         name="width"
         onChange={handleChange}
         className="form-control mr-2"
@@ -254,7 +256,7 @@ console.log(err) })
         style={{ width: '80px' }} 
 
       >
-        <option value="cm">cm</option>
+        {/* <option value="cm">cm</option> */}
         <option value="m">m</option>
         <option value="m²">m²</option>
         <option value="ft">ft</option>
@@ -263,7 +265,7 @@ console.log(err) })
       </select>
 
       <input
-        type="text"
+        type="number"
         name="length"
         
         onChange={handleChange}
@@ -280,7 +282,7 @@ console.log(err) })
         style={{ width: '80px' }}>
 
 
-        <option value="cm">cm</option>
+        {/* <option value="cm">cm</option> */}
         <option value="m">m</option>
         <option value="m²">m²</option>
         <option value="ft">ft</option>
