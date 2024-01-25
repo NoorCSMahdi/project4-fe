@@ -154,3 +154,21 @@
   opacity: 1;
   transform: scaleX(1);
 }
+
+.footerContainer {
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  /* position: relative; */
+  /* z-index: 3; */
+}
+
+/* footer {
+  margin-top: auto; 
+} */
+#root{
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
