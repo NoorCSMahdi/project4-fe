@@ -2,6 +2,8 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import Axios from 'axios';
+import QuotationEditForm from '../quotation/QuotationEditForm';
+import { Link } from 'react-router-dom';
 
 
 export default function ConsultationDetails() {
@@ -52,6 +54,7 @@ export default function ConsultationDetails() {
         <label>{quotation[0]?.notes}</label>    
         </div>
     </div>
+        <Link  to={`/quotation/QuotationEditForm/${consultation_id}`}>Add Quotation</Link>
     </div>
   )
 }

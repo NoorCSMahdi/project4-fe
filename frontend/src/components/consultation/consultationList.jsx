@@ -174,7 +174,7 @@ return(
   <div>
       <h2 className='text-center mt-4'>Consultation List</h2>
        <div  className='row d-flex justify-content-center align-items-center text-center table table-bordered mb-2'>
-       <div className='col-md-6 '>
+       <div className=' '>
          <table className="table table-stripes table mt-4 table border-top">
           <thead>
             <tr className="table-dark">
