@@ -158,14 +158,14 @@ const getToken = () => {
         <div className="col-md-6 col-lg-6">
         <form onSubmit={handleSubmit} autoComplete="off">
         <div className="mb-3 pb-1"> 
-          <label>User</label>
-          <input type='text' name='user' onChange={handleChange} value={newQuotation.user} disabled></input> id
+          <label className="form-label">User</label>
+          <input   className="form-control" type='text' name='user' onChange={handleChange} value={newQuotation.user} disabled></input>
         </div>
         {/* <div>
           <label>company</label>
           <input type='text' name='company' onChange={handleChange} readOnly></input> id
         </div> */}
-        <div className="mb-3 pb-1">
+        {/* <div className="mb-3 pb-1">
   <label htmlFor="consultation" id="consultation" className="form-label">Consultation: </label> 
   <select  name="consultation" className="form-select" onChange={handleConsultationChange} required>
     <option value="" disabled>
@@ -181,7 +181,7 @@ const getToken = () => {
     :
     null}
   </select>
-</div>
+</div> */}
 
             {/* <div className="mb-3 pb-1">
                 <label htmlFor="date" className="form-label">Date</label>
@@ -243,8 +243,8 @@ const getToken = () => {
                 <textarea className="form-control" id="notes" name="notes" value={formData.note} onChange={handleChange}></textarea>
             </div>
             <div className="mb-3 pb-1">
-                <button onClick={ () => props.setIsCreateQuotation(false) } className="btn btn-secondary me-2">Cancel</button>
-                <input className='btn btn-primary' type="submit" value="Add Quotation" />
+{/*<button onClick={ () => props.setIsCreateQuotation(false) } className="btn btn-secondary me-2">Cancel</button>*/}
+                <input className='btn btn-dark' type="submit" value="Add Quotation" />
             </div>
             
         </form>
