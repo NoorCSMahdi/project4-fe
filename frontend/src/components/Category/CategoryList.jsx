@@ -99,16 +99,23 @@ export default function CategoryList(props) {
      <div className="row">
         {allCategories}
         </div>
-    
-        {(!isEdit) ?(
-
+       <div>
+       {props.user && props.user.userType=="Admin"? (
+        !isEdit ? (
+         <CategoryCreateForm addCategory={addCategory}  />
         
-        <CategoryCreateForm addCategory={addCategory}  />
-        
-         ) :(
-        <CategoryEditForm key={currentCategory._id} category={currentCategory} updatedCategory={UpdateCategory}  />
-        )}
-         </div>
+       ):(
+        <CategoryEditForm key={currentCategory._id} category={currentCategory} updatedCategory={UpdateCategory} 
+         />
+       )
+      ):(
+        ""
+      )}
+     </div>
+       
+        </div>
+      
+       
     
         </>
       )

@@ -26,6 +26,7 @@ import RequestList from "./components/adminView/RequestList";
 import ConsultationCreateForm from "./components/consultation/consultationCreateForm";
 import QuotationCreateForm from "./components/quotation/QuotationCreateForm";
 import ConsultationDetails from "./components/consultation/ConsultationDetails";
+import EditCompanyForm from "./components/company/EditCompany";
 
 function App() {
   const [user, setUser] = useState({});
@@ -61,7 +62,7 @@ function App() {
   const loginHandler = (cred) => {
     Axios.post("/auth/signin", cred)
       .then((res) => {
-        console.log("res.data.token", res.data.token)
+        console.log("res.data.token", res.data.token);
         let token = res.data.token;
         if (token != null) {
           sessionStorage.setItem("token", token);
@@ -96,8 +97,8 @@ function App() {
     Axios.get(`/user/detail?id=${id}`)
       .then((response) => {
         let user = response.data.user;
-        sessionStorage.setItem("userType",user.userType)
-        console.log('current user', user);
+        sessionStorage.setItem("userType", user.userType);
+        console.log("current user", user);
         setCurrentUser(user);
       })
       .catch((err) => {
@@ -121,289 +122,142 @@ function App() {
   };
   return (
     <>
-    <div class="App">
-    <header className="bg-dark text-white text-center py-2">
-        <div className="container">
-          <nav className="navbar navbar-expand-lg px-0">
-          {isAuth && currentUser?.userType === "User"? (
-        <div>
-          <Link to="/" className="btn">
-            Home
-          </Link>
-          &nbsp;
-          
-          {/* <Link
-            className="nav-link text-white d-inline"
-            style={{ padding: 10 }}
-            to="/company/AddCompanyForm"
-          >
-            Add Company
-          </Link>{" "}
-          &nbsp; */}
-         
-            <Link  className="nav-link text-white d-inline"
-            style={{ padding: 10 }} to="/logout" onClick={onLogoutHandler} >
-            Logout
-          </Link>{" "}
-          &nbsp;
-          <Link
-            className="nav-link text-white d-inline"
-            style={{ padding: 10 }}
-            to="/company/JoinRequestForm"
-          >
-            Join As a Company
-          </Link>{" "}
-          &nbsp;
-          {/* <Link
-            className="nav-link text-white d-inline"
-            style={{ padding: 10 }}
-            to="/company/Companies"
-          >
-            Show Companies
-          </Link>{" "}
-          &nbsp; */}
-          {/* <Link
-            className="nav-link text-white d-inline"
-            style={{ padding: 10 }}
-            to="/user/UserList"
-          >
-            {" "}
-            User List{" "}
-          </Link>{" "}
-          &nbsp; */}
-          <Link
-            className="nav-link text-white d-inline"
-            style={{ padding: 10 }}
-            to="/user/UserProfile"
-          >
-            {" "}
-            User Profile{" "}
-          </Link>{" "}
-          &nbsp;
-          {/* <Link className="nav-link text-white d-inline" style={{padding:10}} to="/company/CompanyDetails"> Company Details </Link> &nbsp; */}
-          <Link
-            className="nav-link text-white d-inline"
-            style={{ padding: 10 }}
-            to="/Category/CategoryList"
-          >
-            Category List
-          </Link>{" "}
-          &nbsp;
-          {/* <Link
-            className="nav-link text-white d-inline"
-            style={{ padding: 10 }}
-            to="/consultation/consultationList"
-          >
-            Consultation List
-          </Link>{" "} */}
-          &nbsp;
-           <Link
-            className="nav-link text-white d-inline"
-            style={{ padding: 10 }}
-            to="/quotation/QuotationList"
-          >
-            {" "}
-            QuotationList{" "}
-          </Link>{" "}
-          &nbsp;
-          {/*<Link
-            className="nav-link text-white d-inline"
-            style={{ padding: 10 }}
-            to="/appointment/AppointmentList"
-          >
-            {" "}
-            Appointment List{" "}
-          </Link>{" "}
-          &nbsp; */}
-          {/* 
-          
-          <Link to="/logout" onClick={onLogoutHandler} className="btn">
-            Logout
-          </Link> */}
-
-        </div>
-      ) :  (
-      
-        ""
-    )}
-
- {currentUser?.userType === "Admin"? (
-
-          <div>
-            <Link to="/" className="btn">
-            Home
-          </Link>
-          &nbsp;
-          <Link  className="nav-link text-white d-inline"
-            style={{ padding: 10 }} to="/logout" onClick={onLogoutHandler} >
-            Logout
-          </Link>{" "}
-          &nbsp;
-            <Link
-            className="nav-link text-white d-inline"
-            style={{ padding: 10 }}
-            to="/user/UserProfile"
-          >
-            {" "}
-            User Profile{" "}
-          </Link>{" "}
-          &nbsp;
-
-          <Link
-            className="nav-link text-white d-inline"
-            style={{ padding: 10 }}
-            to="/company/AddCompanyForm"
-          >
-            {" "}
-            Add Company{" "}
-          </Link>{" "}
-          &nbsp;
-            <Link
-            className="nav-link text-white d-inline"
-            style={{ padding: 10 }}
-            to="/adminView/Request"
-          >
-            {" "}
-            Request List{" "}
-          </Link>{" "}
-          &nbsp; &nbsp;
-          <Link
-            className="nav-link text-white d-inline"
-            style={{ padding: 10 }}
-            to="/Category/CategoryList"
-          >
-            Category List
-          </Link>{" "}
-          &nbsp;
-
-          {/* <Link
-            className="nav-link text-white d-inline"
-            style={{ padding: 10 }}
-            to="/consultation/consultationList"
-          >
-            Consultation List
-          </Link>{" "} 
-          &nbsp; */}
-          <Link
-            className="nav-link text-white d-inline"
-            style={{ padding: 10 }}
-            to="/quotation/QuotationList"
-          >
-            {" "}
-            QuotationList{" "}
-          </Link>{" "}
-          &nbsp;
-          <Link
-            className="nav-link text-white d-inline"
-            style={{ padding: 10 }}
-            to="/user/UserList"
-          >
-            {" "}
-            User List{" "}
-          </Link>{" "}
-          &nbsp; 
-          </div>
-        ): (
-      
-          ""
-      )}
-  
-   {currentUser?.userType === "CompanyOwner"? (
-
-          <div>
-            <Link  className="nav-link text-white d-inline"
-            style={{ padding: 10 }} to="/logout" onClick={onLogoutHandler} >
-            Logout
-          </Link>{" "}
-          &nbsp;
-          <Link
-            className="nav-link text-white d-inline"
-            style={{ padding: 10 }}
-            to="/consultation/consultationList/:company_id"
-          >
-            Consultation List
-          </Link>{" "} 
-          &nbsp; 
-          <Link
-            className="nav-link text-white d-inline"
-            style={{ padding: 10 }}
-            to="/company/AddCompanyForm"
-          >
-            {" "}
-            Add Company{" "}
-          </Link>{" "}
-          &nbsp;
-          <Link
-          className="nav-link text-white d-inline"
-          style={{ padding: 10 }}
-          to="/Category/CategoryList"
-        >
-          Category List
-        </Link>{" "}
-        &nbsp;
-        
-        <Link
-            className="nav-link text-white d-inline"
-            style={{ padding: 10 }}
-            to="/quotation/QuotationList"
-          >
-            {" "}
-            QuotationList{" "}
-          </Link>{" "}
-          &nbsp;
-          {/* <Link
-            className="nav-link text-white d-inline"
-            style={{ padding: 10 }}
-            to="/consultation/consultationList/:company_id"
-          >
-            Consultation List
-          </Link>{" "} 
-          &nbsp; */}
-          </div>
-        )
-        : (
-          ""
-             )}
-
-        <>
-         
-                   
-          {/* <Link
-            className="nav-link text-white d-inline"
-            style={{ padding: 10 }}
-            to="/appointment/AppointmentList"
-          >
-            {" "}
-            Appointment List{" "}
-          </Link>{" "}  */}
-          <Link
-            className="nav-link text-white d-inline"
-            style={{ padding: 10 }}
-            to="/user/SignUpForm"
-          >
-            {" "}
-            Sign Up
-          </Link>{" "}
-          &nbsp;
-          <Link
-            className="nav-link text-white d-inline"
-            style={{ padding: 10 }}
-            to="/user/SignInForm"
-          >
-            {" "}
-            Sign In
-          </Link>{" "}
-          &nbsp;
-        </>
-      
+      <div class="App">
+        <header className="bg-dark text-white text-center py-2">
+          <div className="container">
+            <nav className="navbar navbar-expand-lg px-0">
+              <Link to="/" className="nav-link text-white d-inline">
+                Home
+              </Link>{" "}
+              &nbsp;
+              <Link
+                className="nav-link text-white d-inline"
+                style={{ padding: 10 }}
+                to="/Category/CategoryList"
+              >
+                Category List
+              </Link>{" "}
+              &nbsp;
+              {isAuth ? (
+                <>
+                  <Link
+                    className="nav-link text-white d-inline"
+                    style={{ padding: 10 }}
+                    to="/user/UserProfile"
+                  >
+                    User Profile{" "}
+                  </Link>{" "}
+                  &nbsp;
+                  <Link
+                    className="nav-link text-white d-inline"
+                    style={{ padding: 10 }}
+                    to="/quotation/QuotationList"
+                  >
+                    {" "}
+                    QuotationList{" "}
+                  </Link>{" "}
+                  {currentUser?.userType === "User" && (
+                    <>
+                      <Link
+                        className="nav-link text-white d-inline"
+                        style={{ padding: 10 }}
+                        to="/company/JoinRequestForm"
+                      >
+                        Join As a Company
+                      </Link>{" "}
+                      &nbsp;
+                    </>
+                  )}
+                  {currentUser?.userType === "Admin" && (
+                    <>
+                      <Link
+                        className="nav-link text-white d-inline"
+                        style={{ padding: 10 }}
+                        to="/company/AddCompanyForm"
+                      >
+                        {" "}
+                        Add Company{" "}
+                      </Link>{" "}
+                      &nbsp;
+                      <Link
+                        className="nav-link text-white d-inline"
+                        style={{ padding: 10 }}
+                        to="/adminView/Request"
+                      >
+                        {" "}
+                        Request List{" "}
+                      </Link>{" "}
+                      &nbsp; &nbsp; &nbsp;
+                      <Link
+                        className="nav-link text-white d-inline"
+                        style={{ padding: 10 }}
+                        to="/user/UserList"
+                      >
+                        {" "}
+                        User List{" "}
+                      </Link>{" "}
+                      &nbsp;
+                    </>
+                  )}
+                  {currentUser?.userType === "CompanyOwner" && (
+                    <>
+                      <Link
+                        className="nav-link text-white d-inline"
+                        style={{ padding: 10 }}
+                        to="/consultation/consultationList/:company_id"
+                      >
+                        Consultation List
+                      </Link>{" "}
+                      &nbsp;
+                      <Link
+                        className="nav-link text-white d-inline"
+                        style={{ padding: 10 }}
+                        to="/company/AddCompanyForm"
+                      >
+                        {" "}
+                        Add Company{" "}
+                      </Link>{" "}
+                      &nbsp;
+                    </>
+                  )}
+                  <Link
+                    className="nav-link text-white d-inline"
+                    style={{ padding: 10 }}
+                    to="/logout"
+                    onClick={onLogoutHandler}
+                  >
+                    Logout
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link
+                    className="nav-link text-white d-inline"
+                    style={{ padding: 10 }}
+                    to="/user/SignUpForm"
+                  >
+                    {" "}
+                    Sign Up
+                  </Link>{" "}
+                  &nbsp;
+                  <Link
+                    className="nav-link text-white d-inline"
+                    style={{ padding: 10 }}
+                    to="/user/SignInForm"
+                  >
+                    {" "}
+                    Sign In
+                  </Link>{" "}
+                  &nbsp;
+                </>
+              )}
             </nav>
           </div>
-    </header>   
-     </div>
-    
-{/* currentUser?.userType === "Admin" ? ( */}
-     
-      
+        </header>
+      </div>
+
+      {/* currentUser?.userType === "Admin" ? ( */}
+
       <Routes>
         {currentUser ? (
           <>
@@ -414,20 +268,17 @@ function App() {
             />
             <Route
               path="/company/JoinRequestForm"
-              element={
-                currentUser&&
-              <JoinRequestForm user={currentUser} />}
+              element={currentUser && <JoinRequestForm user={currentUser} />}
             />
             <Route path="/company/category/:id" element={<Companies />} />
-            <Route path="/Category/CategoryList" element={currentUser ? <CategoryList user={currentUser} />:""} />
+            <Route
+              path="/Category/CategoryList"
+              element={currentUser ? <CategoryList user={currentUser} /> : ""}
+            />
             <Route
               path="/user/UserList"
               element={
-                currentUser?.userType === "Admin" ? (
-                  <UserList />
-                ) : (
-                  <HomePage />
-                )
+                currentUser?.userType === "Admin" ? <UserList /> : <HomePage />
               }
             />
             <Route
@@ -435,8 +286,6 @@ function App() {
               element={
                 currentUser?.userType === "Admin" ? (
                   <RequestList />
-
-                  
                 ) : (
                   <HomePage />
                 )
@@ -446,9 +295,7 @@ function App() {
               path="/company/AddCompanyForm"
               element={
                 currentUser?.userType === "Admin" ? (
-                  <AddCompanyForm/>
-
-                  
+                  <AddCompanyForm />
                 ) : (
                   <HomePage />
                 )
@@ -463,6 +310,10 @@ function App() {
               path="/user/EditProfile"
               element={<EditProfile {...currentUser} editUpdate={editUpdate} />}
             />
+            <Route
+              path="/company/edit/:id"
+              element={<EditCompanyForm {...currentUser} />}
+            />
             <Route path="/company/category/:id" element={<Companies />} />
             <Route
               path="/company/CompanyDetails"
@@ -474,8 +325,10 @@ function App() {
             />
             <Route
               path="/consultation/consultationList/:company_id"
-              element={!!currentUser &&
-                <ConsultationList user_fullName={currentUser.user_fullName} />
+              element={
+                !!currentUser && (
+                  <ConsultationList user_fullName={currentUser.user_fullName} />
+                )
               }
             />
             {/* <Route
@@ -490,19 +343,44 @@ function App() {
               path="/appointment/AppointmentList"
               element={<AppointmentList />}
             /> */}
-            <Route path='/quotation/QuotationList' element={<QuotationList/>} />
-            <Route path='/appointment/AppointmentList/:id' element={<AppointmentList /> } />
-            <Route path="/consultation/consultationCreateForm/:id" element={<ConsultationCreateForm />} />
-            <Route path="/consultation/consultationList/:company_id" element={<ConsultationList />} />
-            <Route path="/quotation/QuotationCreateForm/:id" element={<QuotationCreateForm />} />
-            <Route path="/consultation/consultationDetails/:consultation_id" element={<ConsultationDetails />} />
+            <Route
+              path="/quotation/QuotationList"
+              element={<QuotationList />}
+            />
+            <Route
+              path="/appointment/AppointmentList/:id"
+              element={<AppointmentList />}
+            />
+            <Route
+              path="/consultation/consultationCreateForm/:id"
+              element={<ConsultationCreateForm />}
+            />
+            <Route
+              path="/consultation/consultationList/:company_id"
+              element={<ConsultationList />}
+            />
+            <Route
+              path="/quotation/QuotationCreateForm/:id"
+              element={<QuotationCreateForm />}
+            />
+            <Route
+              path="/consultation/consultationDetails/:consultation_id"
+              element={<ConsultationDetails />}
+            />
           </>
-        ) : ( // else
+        ) : (
+          // else
           <>
             <Route path="/" element={<HomePage />} />
             <Route path="/company/category/:id" element={<Companies />} />
-            <Route path="/consultation/consultationCreateForm/:id" element={<ConsultationCreateForm />} />
-            <Route path="/consultation/consultationList/:company_id" element={<ConsultationList />} />
+            <Route
+              path="/consultation/consultationCreateForm/:id"
+              element={<ConsultationCreateForm />}
+            />
+            <Route
+              path="/consultation/consultationList/:company_id"
+              element={<ConsultationList />}
+            />
             <Route path="/user/SignUpForm" element={<SignUpForm />} />
 
             <Route
@@ -513,8 +391,10 @@ function App() {
               path="/company/CompanyDetails/:id"
               element={<CompanyDetails />}
             />
-            <Route path="/consultation/consultationDetails/:consultation_id" element={<ConsultationDetails />} />
-
+            <Route
+              path="/consultation/consultationDetails/:consultation_id"
+              element={<ConsultationDetails />}
+            />
           </>
         )}
       </Routes>
@@ -525,7 +405,9 @@ function App() {
       </footer> */}
       <footer className="px-3 py-2 text-bg-dark mt-5 stickToBottom">
         <div className="container">
-          <p className="mb-1 text-white">&copy; 2024 WeBuild. All rights reserved.</p>
+          <p className="mb-1 text-white">
+            &copy; 2024 WeBuild. All rights reserved.
+          </p>
         </div>
       </footer>
     </>

@@ -2,24 +2,48 @@
 import Axios from 'axios';
 import Map from './Map';
 import React, { useState, useEffect ,useRef} from 'react';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams  } from 'react-router-dom'
 
 
 
 export default function EditCompanyForm(props) {
-  const [editCompany, setEditCompany] = useState(props.editCompany);
+  const navigate = useNavigate();
+  let { id } = useParams();
+  const [editCompany, setEditCompany] = useState({});
   const [location, setLocation] = useState("");
   const [destination, setDestination] = useState(null);
   const autocompleteRef = useRef(null);
-  const [file, setFile] = useState(props.editCompany.company_image);
+  const [file, setFile] = useState(editCompany?.company_image);
   const [imageName, setImageName] = useState(null);
   editCompany.user = sessionStorage.getItem("UserId");
-  const navigate = useNavigate();
   // useEffect(()=>{
   //   loadCategoriesList();
   // }, [])
 
-  
+  useEffect(() => {
+    // Fetch cars for the specific company
+    Axios
+      .get(`/company/detail?id=${id}`)
+      .then(response => {
+        console.log('response', response);
+        let lat = parseFloat(response.data.company.company_latitude);
+        let long = parseFloat(response.data.company.company_longitude);
+        console.log('lat', lat, '\nlong', long);
+        if(isNaN(lat)){
+          lat = 0;
+        }
+        if(isNaN(long)){
+          long = 0;
+        }
+        response.data.company.company_latitude = lat;
+        response.data.company.company_longtude = long;
+        setEditCompany(response.data.company ? response.data.company : {});
+      })
+      .catch(error => {
+        console.error('Error fetching company:', error);
+      });
+  }, [id]);
+ 
   const successCallback = (position) => {
     console.log("coor",position.coords);
     const newLocation = {
@@ -78,7 +102,7 @@ export default function EditCompanyForm(props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("company_image", file);
+    formData.append("company_images", file);
     formData.append("company_name", editCompany.company_name);
     formData.append("company_description", editCompany.company_description);
     formData.append("company_phoneNumber", editCompany.company_phoneNumber);
@@ -100,8 +124,7 @@ export default function EditCompanyForm(props) {
     .then(res=>{
       console.log(res);
       console.log("success");
-      props.isEdit(false);
-      navigate("/company/index");
+      navigate("/company/CompanyDetails/"+id);
     })
     .catch(err=>{
       console.log(err);
@@ -114,7 +137,6 @@ export default function EditCompanyForm(props) {
     // } catch (error) {
     //   console.log('Error adding Company:', error);
     // }
-    event.target.reset();
   };
 
   return (
