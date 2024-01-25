@@ -257,7 +257,9 @@ function App() {
       </div>
 
       {/* currentUser?.userType === "Admin" ? ( */}
-     <main>
+
+<main>
+
       <Routes>
         {currentUser ? (
           <>
@@ -404,7 +406,9 @@ function App() {
           <p className="mb-1 text-white">&copy; 2024 | Voiture App </p>
         </div>
       </footer> */}
-     <footer className="text-center py-3 bg-dark text-white">
+
+       <footer className="text-center py-3 bg-dark text-white">
+
         <div className="footerContainer">
           <p>&copy; 2024 WeBuild. All rights reserved.</p>
         </div>
